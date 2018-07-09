@@ -3,7 +3,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as mpl
-path_csv = r'C:\Users\mital\Desktop\IOE 590 - Prof. Saigal\rides_withstartedon\rides.csv (1)\rides_.csv'   
+path_csv = r'file_path_here'   
 rides = pd.read_csv(path_csv, sep=',',parse_dates = ['convert_tz(rdd.created_date, \'UTC\', \'US/Central\')','convert_tz(r.started_on, \'UTC\', \'US/Central\')','convert_tz(r.completed_on, \'UTC\', \'US/Central\')'])
 trial = rides.rename(columns = {'id':'driver_id','convert_tz(rdd.created_date, \'UTC\', \'US/Central\')':'dispatched_on','convert_tz(r.started_on, \'UTC\', \'US/Central\')':'started_on','convert_tz(r.completed_on, \'UTC\', \'US/Central\')':'completed_on'})
 trial.dropna(axis=0,how='any',subset =['dispatch_location_lat','dispatch_location_long','start_location_lat', 'start_location_long','end_location_lat', 'end_location_long','dispatched_on','started_on','completed_on'],inplace=True)
