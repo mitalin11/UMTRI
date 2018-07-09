@@ -21,14 +21,6 @@ trial = trial[(trial.started_on > trial.dispatched_on) | (trial.completed_on > t
 #removing the trips where the start and dispatch locations are the same - not interested in trips where no idle behavior is visible
 
 
-# In[19]:
-
-
-trial.dtypes
-
-
-# In[7]:
-
 
 get_ipython().run_line_magic('matplotlib', 'inline')
 ridesperday = trial['day_of_ride'].value_counts().reset_index()
@@ -43,9 +35,6 @@ my_plot.set_ylabel("Number of Rides", fontsize=12)
 
 
 
-# In[16]:
-
-
 fareperday = trial.groupby(['day_of_ride'],as_index=False)['total_fare'].mean()
 fareperday.columns = ['Day_of_Ride', 'Average Fare']
 days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday', 'Sunday']
@@ -57,14 +46,7 @@ my_plot_fare.set_xlabel("Day of Ride", fontsize=12)
 my_plot_fare.set_ylabel("Average Fare per Day($)", fontsize=12)
 
 
-# In[45]:
-
-
 merged.loc[merged['time_diff'] > 10 , ['total_fare','start_location_long','start_location_lat','end_location_long','end_location_lat','time_diff']]
-
-
-# In[21]:
-
 
 
 
